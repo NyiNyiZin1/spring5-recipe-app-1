@@ -133,6 +133,13 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+        notes.setRecipe(this);
+    }
+
+    public Recipe addIngredient(Ingredient ingredient) {
+        ingredient.setRecipe(this);
+        this.ingredients.add(ingredient);
+        return this;
     }
 
     public Set<Category> getCategories() {
@@ -141,29 +148,5 @@ public class Recipe {
 
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
-    }
-
-    @Override
-    public String toString() {
-        /*StringBuilder sb = new StringBuilder();
-        categories.forEach(category -> {
-            sb.append(category.toString());
-        });
-*/
-        return "Recipe{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", prepTime=" + prepTime +
-                ", cookTime=" + cookTime +
-                ", servings=" + servings +
-                ", source='" + source + '\'' +
-                ", url='" + url + '\'' +
-                ", directions='" + directions + '\'' +
-                ", difficulty=" + difficulty +
-                ", ingredients=" + ingredients +
-                //", image=" + Arrays.toString(image) +
-                ", notes=" + notes +
-                ", categories=" +categories +
-                '}';
     }
 }
